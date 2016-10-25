@@ -2,7 +2,7 @@
 
 See You Tube demo Video 
 
-[![You tube demo](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/5vy2UgRxWkQ)
+[You tube demo](https://youtu.be/5vy2UgRxWkQ)
 
 This is a Play Framework application that stores markdown pages in a Sqlite database accessed using REST services.
 
