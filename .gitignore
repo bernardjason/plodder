@@ -1,0 +1,15 @@
+/.cache-main
+/.cache-tests
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+/test.db
+/bin/
+/global-groovy.log
+/soapui-errors.log
+/soapui.log

@@ -1,0 +1,91 @@
+@* editor Template File *@
+@(text:String,path:String,filename:String,all:List[String])
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="@routes.Assets.at("javascripts/3.3.7/bootstrap.min.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
+        
+  
+    <script src="@routes.Assets.at("javascripts/1.12.4/jquery.min.js")"</script>
+    <script src="@routes.Assets.at("javascripts/1.2.0/js/tether.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/3.3.7/bootstrap.min.js")"></script>
+  
+  	<script src="@routes.Assets.at("javascripts/marked/marked.js")"></script>
+  	
+  	<script src="@routes.Assets.at("javascripts/highlight.min.js")"></script>
+  	
+  	<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  	
+     <script src="@routes.Assets.at("javascripts/plodder.js")"></script>
+     <script>
+     var pagetext="";
+
+     $('document').ready(function() {
+			console.log("ready!");
+
+			 @if( text != null ) {
+			 	pagetext="@text"
+               
+            } else {     
+               pagetext = ""+          
+	           @for(a <- all) {
+	           	"@("[/"+a+"](/plodder/markdown/"+a+")")"+"\n\n"+
+	           }
+	           ""	           	            		      
+	         }
+	         loadMarkdown(pagetext);
+	         $('#markdown').val(decodeHtml(pagetext));
+		});
+     </script>
+
+      </head>
+      <body>
+      
+   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+   	    <a class="navbar-brand" href="/plodder/markdown/home"><table><tr><td><img src="@routes.Assets.at("/images/favicon.png")" class="img-responsive" ></td><td style="text-align:top">plodder</td></tr></table></a>
+	    <ul class="nav navbar-nav">
+	      <li class="nav-item active" id="menuNavigate">        
+	        <a class="nav-link" href="/plodder/markdown/home">home</a>
+	      </li>
+	      
+	      <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	          @for(a <- all) {
+	          	<li><a href="/plodder/markdown/@a">/@a</a></li>
+	          }
+	          
+	          </ul>
+           </li>
+           
+          <li class="nav-item active" id="menuNavigate">        
+	        <a class="nav-link" data-toggle="collapse" data-target="#source">source</a>
+	      </li>
+	      	
+         </ul>   
+  	</nav>
+
+</div>
+
+    
+    	<div class="container">	
+    		
+			<div  id="preview"> </div>	              
+	    </div>
+	    
+	    <div id="source" class="container collapse">	
+			<textarea style="min-width: 100%" id="markdown"></textarea>	              
+	    </div>
+      </body>
+    </html>

@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET    /                        	controllers.HomeController.navigate
+GET    /swagger                 	controllers.HomeController.swagger
+GET    /swagger.json            	controllers.ApiHelpController.getResources
+# Map static resources from the /public folder to the /assets URL path , required for swagger
+GET    /assets/*file            	controllers.Assets.at(path="/public", file)
+#
+GET    /rawwsdl						controllers.HomeController.rawwsdl(wsdl)
+GET    /markdown/*path/:filename    controllers.HomeController.markdown(path,filename)
+GET    /markdown/:filename          controllers.HomeController.markdown(path="/",filename)
+
+POST   /wsdl						controllers.HomeController.echo()
+#
+GET    /pages                	   	controllers.PagesController.searchFiles(filename)
+GET    /pages/*path/:filename	   	controllers.PagesController.getFile(path,filename)
+POST   /pages/*path/:filename	   	controllers.PagesController.postByName(path,filename)
+PUT    /pages/*path/:filename	   	controllers.PagesController.putByName(path,filename)
+
+GET    /pages/:filename   			controllers.PagesController.getFile(path="/",filename)
+POST   /pages/:filename  			controllers.PagesController.postByName(path="/",filename)
+PUT    /pages/:filename   			controllers.PagesController.putByName(path="/",filename)
+
+GET    /path						controllers.PathController.getAllPaths(pathfilter)
+GET    /path/*path					controllers.PathController.getPath(path)
+#
